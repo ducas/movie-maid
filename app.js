@@ -39,23 +39,31 @@ for (var i = 0; i < extensions.length; i++) {
          console.log(res);
       }
 
-      var directories = res.map(r => path.dirname(r).replace(options.src, ''));
-      directories = unique(directories);
-
-      for (var j = 0; j < directories.length; j++) {
-        var dir = directories[j];
-        var destDir = path.join(options.dest, dir);
-        if (options.whatif) {
-          console.log('mkdir -p ' + destDir);
-          continue;
+      if (options.preserve) {
+        if (options.verbose) {
+          console.log('creating directories...');
         }
 
-        mkdirp.sync(destDir);
+        var directories = res.map(r => path.dirname(r).replace(options.src, ''));
+        directories = unique(directories);
+
+        for (var j = 0; j < directories.length; j++) {
+          var dir = directories[j];
+          var destDir = path.join(options.dest, dir);
+          if (options.whatif) {
+            console.log('mkdir -p ' + destDir);
+            continue;
+          }
+
+          mkdirp.sync(destDir);
+        }
       }
 
       for (var j = 0; j < res.length; j++) {
         var s = res[j];
-        var d = path.join(options.dest, s.replace(options.src, ''));
+        var d = options.preserve
+          ? path.join(options.dest, s.replace(options.src, ''))
+          : path.join(options.dest, path.basename(s));
 
         if (options.verbose || options.whatif) {
           console.log('mv ' + s + ' ' + d);

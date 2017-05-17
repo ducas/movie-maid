@@ -1,0 +1,17 @@
+{
+  "name": "movie-maid",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "array-unique": "^0.3.2",
+    "command-line-args": "^4.0.4",
+    "glob": "^7.1.1",
+    "mkdirp": "^0.5.1"
+  }
+}

@@ -17,7 +17,7 @@ module.exports = {
     production : {
       user : 'pi',
       host : '10.1.1.15',
-      ref  : 'origin/deploy',
+      ref  : 'origin/master',
       repo : 'git@github.com:ducas/movie-maid.git',
       path : '/home/pi/movie-maid-deploy',
       'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'

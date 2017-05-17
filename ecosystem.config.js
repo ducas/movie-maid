@@ -3,13 +3,15 @@ module.exports = {
     {
       name      : 'Move TV',
       script    : 'app.js',
-      args      : ['-p', '-s', '/mnt/library/Downloads/complete/TV', '-d', '/mnt/library/TV']
+      args      : ['-p', '-s', '/mnt/library/Downloads/complete/TV', '-d', '/mnt/library/TV'],
+      restart_delay: 300000
     },
 
     {
       name      : 'Move Movies',
       script    : 'app.js',
-      args      : ['-s', '/mnt/library/Downloads/complete/Movies', '-d', '/mnt/library/Movies']
+      args      : ['-s', '/mnt/library/Downloads/complete/Movies', '-d', '/mnt/library/Movies'],
+      restart_delay: 300000
     }
   ],
 

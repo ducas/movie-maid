@@ -70,7 +70,11 @@ for (var i = 0; i < extensions.length; i++) {
         }
         if (options.whatif) { continue; }
 
-        fs.renameSync(s, d);
+        try {
+          fs.renameSync(s, d);
+        } catch (ex) {
+          console.error(ex);
+        }
       }
     }
   });

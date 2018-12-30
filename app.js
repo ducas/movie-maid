@@ -13,7 +13,7 @@ const optionDefinitions = [
   { name: 'whatif', alias: 'w', type: Boolean }
 ];
 
-const extensions = [ 'mp4', 'mkv', 'avi' ];
+const extensions = [ 'mp4', 'mkv', 'avi', 'srt', 'nfo', 'jpg'];
 
 const options = commandLineArgs(optionDefinitions);
 

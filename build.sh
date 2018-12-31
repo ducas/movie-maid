@@ -76,18 +76,19 @@ if [[ "$push" == "true" ]]; then
   done
 
   echo "Creating manifest..."
-  declare create_manifest="\
   docker manifest create --amend ducas/movie-maid:${version} \
-    ducas/movie-maid:${version}-amd64 \
-    ducas/movie-maid:${version}-arm32v7"
-  if [[ "$latest" == "true" ]]; then
-    create_manifest="$create_manifest \
-    ducas/movie-maid:latest-amd64 \
-    ducas/movie-maid:latest-arm32v7"
-  fi
-  eval $create_manifest
+    "ducas/movie-maid:${version}-amd64" \
+    "ducas/movie-maid:${version}-arm32v7"
   echo "Pushing manifest..."
   docker manifest push "ducas/movie-maid:${version}"
-
   echo "Successfully pushed ducas/movie-maid:${version}"
+
+  if [[ "$latest" == "true" ]]; then
+    docker manifest create --amend ducas/movie-maid:latest \
+      ducas/movie-maid:latest-amd64 \
+      ducas/movie-maid:latest-arm32v7
+    echo "Pushing manifest..."
+    docker manifest push "ducas/movie-maid:latest"
+    echo "Successfully pushed ducas/movie-maid:latest"
+  fi
 fi

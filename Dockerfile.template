@@ -1,0 +1,9 @@
+FROM __BASEIMAGE_ARCH__/node:11
+
+__CROSS_ADD https://github.com/multiarch/qemu-user-static/releases/download/v2.12.0/qemu-__QEMU_ARCH__eb-static /usr/bin/qemu-__QEMU_ARCH__-static
+
+WORKDIR /app
+COPY . .
+RUN npm install
+
+ENTRYPOINT ["node", "/app/app.js"]
